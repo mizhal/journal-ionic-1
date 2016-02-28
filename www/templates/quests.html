@@ -3,15 +3,16 @@
         <ion-list>
             <div ng-repeat="state in quests">
                 <ion-item class="item-stable" ng-click="Toggle(state)">
-                    <i class="icon icon-bar-ins left ion-minus"></i> {{state.name}}
-                    <i class="icon icon-bar-ins right ion-plus"></i>
+                    <i class="icon icon-bar-ins left" ng-class="IsShown(state) ? 'ion-minus' : 'ion-plus'"></i> {{state.name}}
+                    <i class="icon icon-bar-ins right ion-plus-circled"></i>
                     
                 </ion-item>
-                <div style="padding-left:1em" ng-show="IsShown(state)" ng-repeat="quest in state.quests">
+                <div class="child-indent-container" ng-show="IsShown(state)" ng-repeat="quest in state.quests">
                     <ion-item class="item-stable" ng-click="Toggle(quest)">
+                        <i class="icon icon-bar-ins left ion-arrow-move"></i>
+                        <i class="icon icon-bar-ins left" ng-class="IsShown(quest) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i>
                         {{quest.title}} 
                         <i class="icon icon-bar-ins right ion-close"></i>
-                        <i class="icon icon-bar-ins right ion-arrow-move"></i>
                         <i class="icon icon-bar-ins right ion-play"></i>
                         <i class="icon icon-bar-ins right ion-edit"></i>
                     </ion-item>
@@ -20,7 +21,6 @@
                             <div class="item item-text-wrap item-icon-left">
                                 <i class="icon ion-pin"></i>
                                 <a ng-bind-html="quest.last_journal | hilightHashtags"></a>
-                              
                             </div>
                         </div>
                         <div class="list card">
@@ -32,6 +32,22 @@
                     </div>
                 </div>
             </div>
+            <ion-item class="item-stable">
+                <i class="icon icon-bar-ins left ion-calendar"></i>
+                <a href="#/quests/scheduled">Scheduled</a>
+            </ion-item>
+            <ion-item class="item-stable">
+                <i class="icon icon-bar-ins left ion-close-round"></i>
+                <a href="#/quests/cancelled">Cancelled</a>
+            </ion-item>
+            <ion-item class="item-stable">
+                <i class="icon icon-bar-ins left ion-minus-circled"></i>
+                <a href="#/quests/failed">Failed</a>
+            </ion-item>
+            <ion-item class="item-stable">
+                <i class="icon icon-bar-ins left ion-checkmark-circled"></i>
+                <a href="#/quests/completed">Completed</a>
+            </ion-item>
         </ion-list>
     </ion-content>
 </ion-view>

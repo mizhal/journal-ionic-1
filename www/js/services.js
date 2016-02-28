@@ -13,8 +13,8 @@ angular.module('app.services', [])
 	this.database = null;
 	
 	this.GetByGroupByState = function(){
-		return [
-				{	key:"status-1", name: "Focus", quests: [
+		var data = [
+				{	key:"status-1", name: "Open", position: 2, quests: [
 					{	key:"quest-1", 
 						title: "Quest 1", description: "Esta es la #quest 1", 
 						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
@@ -28,7 +28,7 @@ angular.module('app.services', [])
 						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
 					},
 				]},
-				{	key:"status-2", name: "Open", quests: [
+				{	key:"status-2", name: "Blocked", position: 1, quests: [
 					{	key:"quest-4", 
 						title: "Quest 4", description: "Esta es la #quest 4", 
 						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
@@ -39,6 +39,12 @@ angular.module('app.services', [])
 					},			
 				]}
 		];
+        
+        return data.sort(function(x, y){
+            if(x.position < y.position) return -1;
+            if(x.position == y.position) return 0;
+            if(x.position > y.position) return 1;
+        });
 	}
 	
 	this.GetFocus = function() {
