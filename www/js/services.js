@@ -8,7 +8,7 @@ angular.module('app.services', [])
 	
 }])
 
-.service('QuestService', ["$resource", function($resource){
+.service('QuestService', ["$resource", "DBWrapper", function($resource, DBWrapper){
 	
 	this.database = null;
 	
@@ -74,6 +74,7 @@ angular.module('app.services', [])
 			"deleted_at datetime"
 	")"
 	;
+    DBWrapper.RegisterForSchema(create_quests);
 	
 	var create_tasks = "CREATE TABLE IF NOT EXISTS Tasks(" +
 		"id integer not null primary key, " +
@@ -86,6 +87,7 @@ angular.module('app.services', [])
 		"deleted_at datetime"
 		")"
 		;
+    DBWrapper.RegisterForSchema(create_tasks);
 		
 	var create_journals = "CREATE TABLE IF NOT EXISTS Journals(" +
 		"id integer not null primary key, " +
@@ -97,18 +99,15 @@ angular.module('app.services', [])
 		"deleted_at datetime"
 		")"
 		;
-	
-	this.CreateSchemaDevice = function($cordovaSQLite){
-		var db = this.database;
-		
-		$cordovaSQLite.execute(db, create_quests);
-		$cordovaSQLite.execute(db, create_tasks);
-		$cordovaSQLite.execute(db, create_journals);
-		
-	}
-	
-	this.CreateSchemaBrowser = function($cordovaSQLite){
-	}
+    DBWrapper.RegisterForSchema(create_journals);
+    
+    this.GetMainFocus = function(){
+        
+    }
+    
+    this.GetAdditionalFoci = function(){
+        
+    }
 }])
 
 .service('FoldingFactoryService', [function(){
@@ -133,5 +132,43 @@ angular.module('app.services', [])
     this.GetFoldingTracker = function() { return new FoldingTracker(); } 
 }])
 
+// this service allows to tests in browser as well as in the device
+.service('DBWrapper', ["$cordovaSQLite", function($cordovaSQLite){
+    
+    var db = null;
+    var dbname = "journal.db";
+    
+    var schema = [];
+  
+    this.RegisterForSchema = function(ddl_command) {
+        schema.push(ddl_command);
+    };
+   
+    
+	this.CreateSchemaDevice = function() {
+        for(var i in schema) {
+		  $cordovaSQLite.execute(db, schema[i]);         
+        }
+	};
+    
+    this.CreateSchemaBrowser = function(){
+        for(var i in schema) {
+          // TODO: #9158c86e-de21-11e5-8604-48d224987c9d schema creation in browsers
+		  //$cordovaSQLite.execute(db, schema[i]);         
+        } 
+    };
+    
+    var self = this;
+    this.Create = function() {
+        if (window.cordova) {
+            db = $cordovaSQLite.openDB({ name: dbname }); //device
+            self.CreateSchemaDevice();
+        } else {
+            db = window.openDatabase(dbname, '1', 'the journal database', 1024 * 1024 * 100); // browser
+            self.CreateSchemaBrowser();
+        }
+    };
+    
+}])
 ;
 

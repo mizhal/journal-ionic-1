@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.filters'])
 
-.run(function($ionicPlatform, $cordovaSQLite, QuestService) {
+.run(["$ionicPlatform", "DBWrapper", function($ionicPlatform, DBWrapper) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,21 +19,7 @@ angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'app.controllers', 'a
       StatusBar.styleDefault();
     }
     
-    var db = null;
-    var dbname = "journal.db";
-    
-    if (window.cordova) {
-      db = $cordovaSQLite.openDB({ name: dbname }); //device
-      QuestService.database = db;
-      QuestService.CreateSchemaDevice($cordovaSQLite);
-    } else {
-      db = window.openDatabase(dbname, '1', 'the journal database', 1024 * 1024 * 100); // browser
-      QuestService.database = db;
-      QuestService.CreateSchemaBrowser();
-    }
-    
-    
-    
+    DBWrapper.Create();
     
   });
-})
+}])
