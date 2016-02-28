@@ -3,12 +3,34 @@
         <ion-list>
             <div ng-repeat="state in quests">
                 <ion-item class="item-stable" ng-click="Toggle(state)">
-                    <i class="icon" ng-class="ion-minus"></i> {{state.name}}
+                    <i class="icon icon-bar-ins left ion-minus"></i> {{state.name}}
+                    <i class="icon icon-bar-ins right ion-plus"></i>
+                    
                 </ion-item>
-                <ion-item class="item-accordion" ng-repeat="quest in state.quests"
-                    ng-show="IsShown(state)">
-                    {{quest.title}}    
-                </ion-item>
+                <div style="padding-left:1em" ng-show="IsShown(state)" ng-repeat="quest in state.quests">
+                    <ion-item class="item-stable" ng-click="Toggle(quest)">
+                        {{quest.title}} 
+                        <i class="icon icon-bar-ins right ion-close"></i>
+                        <i class="icon icon-bar-ins right ion-arrow-move"></i>
+                        <i class="icon icon-bar-ins right ion-play"></i>
+                        <i class="icon icon-bar-ins right ion-edit"></i>
+                    </ion-item>
+                    <div class="child-indent-container" ng-show="IsShown(quest)">
+                        <div class="list card">
+                            <div class="item item-text-wrap item-icon-left">
+                                <i class="icon ion-pin"></i>
+                                <a ng-bind-html="quest.last_journal | hilightHashtags"></a>
+                              
+                            </div>
+                        </div>
+                        <div class="list card">
+                            <div class="item item-text-wrap item-icon-left"> 
+                                <i class="icon ion-pound"></i>
+                                <a ng-bind-html="quest.last_journal | hilightHashtags"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </ion-list>
     </ion-content>

@@ -14,23 +14,47 @@ angular.module('app.services', [])
 	
 	this.GetByGroupByState = function(){
 		return [
-				{key:"status-1", name: "Focus", quests: [
-					{key:"quest-1", title: "Quest 1", description: "Esta es la quest 1", state: "FOCUS"},
-					{key:"quest-2", title: "Quest 2", description: "Esta es la quest 2", state: "FOCUS"},
-					{key:"quest-3", title: "Quest 3", description: "Esta es la quest 3", state: "FOCUS"},
+				{	key:"status-1", name: "Focus", quests: [
+					{	key:"quest-1", 
+						title: "Quest 1", description: "Esta es la #quest 1", 
+						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+					},
+					{	key:"quest-2", 
+						title: "Quest 2", description: "Esta es la #quest 2", 
+						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+					},
+					{	key:"quest-3", 
+						title: "Quest 3", description: "Esta es la #quest 3", 
+						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+					},
 				]},
-				{key:"status-2", name: "Open", quests: [
-					{key:"quest-4", title: "Quest 4", description: "Esta es la quest 4", state: "FOCUS"},
-					{key:"quest-5", title: "Quest 5", description: "Esta es la quest 5", state: "FOCUS"},			
+				{	key:"status-2", name: "Open", quests: [
+					{	key:"quest-4", 
+						title: "Quest 4", description: "Esta es la #quest 4", 
+						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+					},
+					{	key:"quest-5", 
+						title: "Quest 5", description: "Esta es la #quest 5", 
+						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+					},			
 				]}
 		];
 	}
 	
 	this.GetFocus = function() {
 		return [
-			{key:"quest-1", title: "Quest 1", description: "Esta es la quest 1", state: "FOCUS"},
-			{key:"quest-2", title: "Quest 2", description: "Esta es la quest 2", state: "FOCUS"},
-			{key:"quest-3", title: "Quest 3", description: "Esta es la quest 3", state: "FOCUS"},
+					{	key:"quest-1", 
+						title: "Quest 1", description: "Esta es la quest 1", 
+						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+					},
+					{	key:"quest-2", 
+						title: "Quest 2", description: "Esta es la quest 2", 
+						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+					},
+					{	key:"quest-3", 
+						title: "Quest 3", description: "Esta es la quest 3", 
+						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+					},
 		];
 	}
 	
@@ -77,6 +101,8 @@ angular.module('app.services', [])
 		
 	}
 	
+	this.CreateSchemaBrowser = function($cordovaSQLite){
+	}
 }])
 
 ;

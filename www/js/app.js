@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
+angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.filters'])
 
 .run(function($ionicPlatform, $cordovaSQLite, QuestService) {
   $ionicPlatform.ready(function() {
@@ -24,11 +24,16 @@ angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'app.controllers', 'a
     
     if (window.cordova) {
       db = $cordovaSQLite.openDB({ name: dbname }); //device
+      QuestService.database = db;
+      QuestService.CreateSchemaDevice($cordovaSQLite);
     } else {
       db = window.openDatabase(dbname, '1', 'the journal database', 1024 * 1024 * 100); // browser
+      QuestService.database = db;
+      QuestService.CreateSchemaBrowser();
     }
     
-    QuestService.database = db;
+    
+    
     
   });
 })

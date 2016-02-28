@@ -15,6 +15,25 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.icon-bar-ins {
+	height: 80%;
+	width: auto;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+.icon-bar-ins.right {
+	float: right;
+}
+
+.icon-bar-ins.left {
+	float: left;
+}
+
+.child-indent-container {
+	padding-left: 0.5em;
+}
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
