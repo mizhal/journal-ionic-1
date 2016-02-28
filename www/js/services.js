@@ -111,5 +111,27 @@ angular.module('app.services', [])
 	}
 }])
 
+.service('FoldingFactoryService', [function(){
+    
+    var FoldingTracker = function(){
+        var foldingStatus = {};
+        
+        this.IsShown = function (obj) {
+            return foldingStatus[obj.key] == true;
+        }
+        
+        var self = this;
+        
+        this.Toggle = function(obj){
+            if(self.IsShown(obj))
+                foldingStatus[obj.key] = false;
+            else
+                foldingStatus[obj.key] = true;
+        }  
+    };
+    
+    this.GetFoldingTracker = function() { return new FoldingTracker(); } 
+}])
+
 ;
 

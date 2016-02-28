@@ -1,25 +1,15 @@
 angular.module('app.controllers', [])
   
 .controller('focusCtrl', function($scope) {
+    
 
 })
    
-.controller('questsCtrl', ["$scope", "QuestService", function($scope, QuestService) {
+.controller('questsCtrl', ["$scope", "QuestService", "FoldingFactoryService", function($scope, QuestService, FoldingFactoryService) {
 	
 	$scope.quests = QuestService.GetByGroupByState();
-	
-	$scope.foldingStatus = {};
-	
-	$scope.IsShown = function (obj) {
-		return $scope.foldingStatus[obj.key] == true;
-	}
-	
-	$scope.Toggle = function(obj){
-		if($scope.IsShown(obj))
-			$scope.foldingStatus[obj.key] = false;
-		else
-			$scope.foldingStatus[obj.key] = true;
-	}
+	$scope.folding = FoldingFactoryService.GetFoldingTracker();
+    
 }])
    
 .controller('journalCtrl', function($scope) {

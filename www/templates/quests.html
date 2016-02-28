@@ -2,21 +2,21 @@
     <ion-content overflow-scroll="true" padding="true" class="has-header">
         <ion-list>
             <div ng-repeat="state in quests">
-                <ion-item class="item-stable" ng-click="Toggle(state)">
-                    <i class="icon icon-bar-ins left" ng-class="IsShown(state) ? 'ion-minus' : 'ion-plus'"></i> {{state.name}}
+                <ion-item class="item-stable" ng-click="folding.Toggle(state)">
+                    <i class="icon icon-bar-ins left" ng-class="folding.IsShown(state) ? 'ion-minus' : 'ion-plus'"></i> 
+                    {{state.name}}
                     <i class="icon icon-bar-ins right ion-plus-circled"></i>
-                    
                 </ion-item>
-                <div class="child-indent-container" ng-show="IsShown(state)" ng-repeat="quest in state.quests">
-                    <ion-item class="item-stable" ng-click="Toggle(quest)">
+                <div class="child-indent-container" ng-show="folding.IsShown(state)" ng-repeat="quest in state.quests">
+                    <ion-item class="item-stable" ng-click="folding.Toggle(quest)">
                         <i class="icon icon-bar-ins left ion-arrow-move"></i>
-                        <i class="icon icon-bar-ins left" ng-class="IsShown(quest) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i>
+                        <i class="icon icon-bar-ins left" ng-class="folding.IsShown(quest) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i>
                         {{quest.title}} 
                         <i class="icon icon-bar-ins right ion-close"></i>
                         <i class="icon icon-bar-ins right ion-play"></i>
                         <i class="icon icon-bar-ins right ion-edit"></i>
                     </ion-item>
-                    <div class="child-indent-container" ng-show="IsShown(quest)">
+                    <div class="child-indent-container" ng-show="folding.IsShown(quest)">
                         <div class="list card">
                             <div class="item item-text-wrap item-icon-left">
                                 <i class="icon ion-pin"></i>
