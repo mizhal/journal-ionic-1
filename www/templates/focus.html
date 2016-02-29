@@ -1,8 +1,10 @@
 <ion-view title="Focus">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
-        <ion-list ng-repeat="quest in quests">
-            <ion-item>
-            </ion-item>
+        <ion-list>
+            <quest-detail quest="main_focus" />
+        </ion-list>
+        <ion-list ng-repeat="quest in additional_foci">
+            <quest-summary quest="quest" />
         </ion-list>
     </ion-content>
 </ion-view>

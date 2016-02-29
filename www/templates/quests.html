@@ -2,34 +2,13 @@
     <ion-content overflow-scroll="true" padding="true" class="has-header">
         <ion-list>
             <div ng-repeat="state in quests">
-                <ion-item class="item-stable" ng-click="folding.Toggle(state)">
-                    <i class="icon icon-bar-ins left" ng-class="folding.IsShown(state) ? 'ion-minus' : 'ion-plus'"></i> 
+                <ion-item class="item-stable" ng-click="folding.Toggle(state.key)">
+                    <i class="icon icon-bar-ins left" ng-class="folding.IsShown(state.key) ? 'ion-minus' : 'ion-plus'"></i> 
                     {{state.name}}
                     <i class="icon icon-bar-ins right ion-plus-circled"></i>
                 </ion-item>
-                <div class="child-indent-container" ng-show="folding.IsShown(state)" ng-repeat="quest in state.quests">
-                    <ion-item class="item-stable" ng-click="folding.Toggle(quest)">
-                        <i class="icon icon-bar-ins left ion-arrow-move"></i>
-                        <i class="icon icon-bar-ins left" ng-class="folding.IsShown(quest) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i>
-                        {{quest.title}} 
-                        <i class="icon icon-bar-ins right ion-close"></i>
-                        <i class="icon icon-bar-ins right ion-play"></i>
-                        <i class="icon icon-bar-ins right ion-edit"></i>
-                    </ion-item>
-                    <div class="child-indent-container" ng-show="folding.IsShown(quest)">
-                        <div class="list card">
-                            <div class="item item-text-wrap item-icon-left">
-                                <i class="icon ion-pin"></i>
-                                <a ng-bind-html="quest.last_journal | hilightHashtags"></a>
-                            </div>
-                        </div>
-                        <div class="list card">
-                            <div class="item item-text-wrap item-icon-left"> 
-                                <i class="icon ion-pound"></i>
-                                <a ng-bind-html="quest.last_journal | hilightHashtags"></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="child-indent-container" ng-show="folding.IsShown(state.key)" ng-repeat="quest in state.quests">
+                    <quest-summary quest="quest" />
                 </div>
             </div>
             <ion-item class="item-stable">

@@ -1,0 +1,21 @@
+<article class="quest-detail">
+    <ion-item class="item-stable foldable-header" ng-click="folding.Toggle(quest.key)">
+        <i class="icon icon-bar-ins left ion-arrow-move"></i>
+        <i class="icon icon-bar-ins left" ng-class="folding.IsShown(quest.key) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i>
+        {{quest.title}} 
+        <i class="icon icon-bar-ins right ion-close"></i>
+        <i class="icon icon-bar-ins right ion-play"></i>
+        <i class="icon icon-bar-ins right ion-edit"></i>
+    </ion-item>
+    <div class="child-indent-container" ng-show="folding.IsShown(quest.key)">
+        <ion-list ng-repeat="section in quest.sections">
+            <section class="list card" ng-if="section.is_text">
+                <header>{{ section.header }}</header>
+                <div class="item item-text-wrap item-icon-left">
+                    <a ng-bind-html="section.body | hilightHashtags"></a>
+                </div>
+            </section>
+            <todo-section todos="section.todos" ng-if="section.is_todo" />
+        <ion-list>
+    </div>
+</article>

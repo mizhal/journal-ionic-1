@@ -1,0 +1,17 @@
+<section class="todo-section">
+    <header>TRACK:</header>
+    <div class="child-indent-container">
+        <ion-list ng-repeat="todo in todos">
+            <ion-item>
+                [{{todo.status}}]
+                {{todo.text | hilightHashtags}}
+            </ion-item>
+            <div class="child-indent-container" ng-if="todo.comment">
+                <p>{{todo.comment | hilightHashtags}}</p>
+            </div>
+            <div class ="child-indent-container" ng-if="todo.promoted_to">
+                <a href="#/quests/{{todo.promoted_to_slug}}">PROMOTED TO: {{todo.promoted_to}}</a>
+            </div>
+        </ion-list>
+    </div>
+</section>

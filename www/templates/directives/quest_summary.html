@@ -1,0 +1,24 @@
+<article class="quest-summary">
+    <ion-item class="item-stable" ng-click="folding.Toggle(quest)">
+        <i class="icon icon-bar-ins left ion-arrow-move"></i>
+        <i class="icon icon-bar-ins left" ng-class="folding.IsShown(quest) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i>
+        {{quest.title}} 
+        <i class="icon icon-bar-ins right ion-close"></i>
+        <i class="icon icon-bar-ins right ion-play"></i>
+        <i class="icon icon-bar-ins right ion-edit"></i>
+    </ion-item>
+    <div class="child-indent-container" ng-show="folding.IsShown(quest)">
+        <div class="list card">
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-pin"></i>
+                <a ng-bind-html="quest.description | hilightHashtags"></a>
+            </div>
+        </div>
+        <div class="list card">
+            <div class="item item-text-wrap item-icon-left"> 
+                <i class="icon ion-pound"></i>
+                <a ng-bind-html="quest.last_journal | hilightHashtags"></a>
+            </div>
+        </div>
+    </div>
+</article>

@@ -47,23 +47,6 @@ angular.module('app.services', [])
         });
 	}
 	
-	this.GetFocus = function() {
-		return [
-					{	key:"quest-1", 
-						title: "Quest 1", description: "Esta es la quest 1", 
-						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
-					},
-					{	key:"quest-2", 
-						title: "Quest 2", description: "Esta es la quest 2", 
-						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
-					},
-					{	key:"quest-3", 
-						title: "Quest 3", description: "Esta es la quest 3", 
-						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
-					},
-		];
-	}
-	
 	var create_quests = "CREATE TABLE IF NOT EXISTS Quests(id integer not null primary key, " +
 			"name varchar(255) not null," +
 			"description text," +
@@ -102,11 +85,54 @@ angular.module('app.services', [])
     DBWrapper.RegisterForSchema(create_journals);
     
     this.GetMainFocus = function(){
-        
+        return {	
+            key:"quest-1", 
+            title: "Quest 1", description: "Esta es la quest 1", 
+            sections: [
+                {
+                    header: "Descripcion",
+                    key: "sect-desc", 
+                    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut",
+                    is_text: true
+                },
+                {
+                    header: "GIT branch",
+                    key: "sect-git-branch",
+                    body: "435324-users-and-show",
+                    is_text: true
+                },
+                {
+                    todos: [
+                        {
+                            status: "QUEST",
+                            text: "Do anything", comment: "sdsdfsd",
+                            promoted_to: "#96",
+                            promoted_to_slug: "96"
+                        },
+                        { status: "NEXT", text: "Do something" },
+                        { status: "TODO",
+                            text: "Anything 1", comment: "sdfsad"},
+                        { status: "DONE", 
+                            text: "Anything 2", comment: "sdfd"}
+                    ],
+                    is_todo: true
+                }
+            ],
+            last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+        };
     }
     
     this.GetAdditionalFoci = function(){
-        
+        return [
+            {	key:"quest-2", 
+                title: "Quest 2", description: "Esta es la quest 2", 
+                last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+            },
+            {	key:"quest-3", 
+                title: "Quest 3", description: "Esta es la quest 3", 
+                last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
+            },
+        ];
     }
 }])
 
@@ -115,17 +141,17 @@ angular.module('app.services', [])
     var FoldingTracker = function(){
         var foldingStatus = {};
         
-        this.IsShown = function (obj) {
-            return foldingStatus[obj.key] == true;
+        this.IsShown = function (key) {
+            return foldingStatus[key] == true;
         }
         
         var self = this;
         
-        this.Toggle = function(obj){
-            if(self.IsShown(obj))
-                foldingStatus[obj.key] = false;
+        this.Toggle = function(key){
+            if(self.IsShown(key))
+                foldingStatus[key] = false;
             else
-                foldingStatus[obj.key] = true;
+                foldingStatus[key] = true;
         }  
     };
     

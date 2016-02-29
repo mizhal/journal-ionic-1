@@ -1,12 +1,14 @@
 angular.module('app.controllers', [])
-  
-.controller('focusCtrl', ["$scope", "QuestService", "FoldingFactoryService", function($scope, QuestService, FoldingFactoryService) {
     
-    $scope.main_focus = QuestService.GetMainFocus();
-    $scope.additional_foci = QuestService.GetAdditionalFoci();
-    $scope.folding = FoldingFactoryService.GetFoldingTracker();
+.controller('focusCtrl', ["$scope", "QuestService", "FoldingFactoryService", 
+    function($scope, QuestService, FoldingFactoryService) {
+    
+        $scope.main_focus = QuestService.GetMainFocus();
+        $scope.additional_foci = QuestService.GetAdditionalFoci();
+        $scope.folding = FoldingFactoryService.GetFoldingTracker();
 
-}])
+    }]
+)
    
 .controller('questsCtrl', ["$scope", "QuestService", "FoldingFactoryService", function($scope, QuestService, FoldingFactoryService) {
 	

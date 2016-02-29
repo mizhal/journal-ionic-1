@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('app', ['ionic', 'ngResource', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.filters'])
 
-.run(["$ionicPlatform", "DBWrapper", function($ionicPlatform, DBWrapper) {
+.run(["$ionicPlatform", "DBWrapper", "$rootScope", function($ionicPlatform, DBWrapper, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
