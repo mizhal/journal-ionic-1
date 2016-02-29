@@ -9745,3 +9745,6 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.icon-action-stop {
+  width: 1px; }

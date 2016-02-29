@@ -8,6 +8,7 @@
         <i class="icon icon-bar-ins right ion-edit"></i>
     </ion-item>
     <div class="child-indent-container" ng-show="folding.IsShown(quest.key)">
+        <action-bar actions="quest.actions"/>
         <ion-list ng-repeat="section in quest.sections">
             <section class="list card" ng-if="section.is_text">
                 <header>{{ section.header }}</header>

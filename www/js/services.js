@@ -16,24 +16,29 @@ angular.module('app.services', [])
 		var data = [
 				{	key:"status-1", name: "Open", position: 2, quests: [
 					{	key:"quest-1", 
+                        actions: ["focus", "block", "note", "delete", "fail", "cancel"],
 						title: "Quest 1", description: "Esta es la #quest 1", 
 						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
 					},
 					{	key:"quest-2", 
+                        actions: ["focus", "block", "note", "delete", "fail", "cancel"],
 						title: "Quest 2", description: "Esta es la #quest 2", 
 						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
 					},
 					{	key:"quest-3", 
+                        actions: ["focus", "block", "note", "delete", "fail", "cancel"],
 						title: "Quest 3", description: "Esta es la #quest 3", 
 						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
 					},
 				]},
 				{	key:"status-2", name: "Blocked", position: 1, quests: [
 					{	key:"quest-4", 
+                        actions: ["wake", "focus", "delete", "fail", "cancel"],
 						title: "Quest 4", description: "Esta es la #quest 4", 
 						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
 					},
 					{	key:"quest-5", 
+                        actions: ["wake", "focus", "delete", "fail", "cancel"],
 						title: "Quest 5", description: "Esta es la #quest 5", 
 						last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
 					},			
@@ -88,6 +93,7 @@ angular.module('app.services', [])
         return {	
             key:"quest-1", 
             title: "Quest 1", description: "Esta es la quest 1", 
+            actions: ["stop", "block", "note", "delete", "fail", "cancel"],
             sections: [
                 {
                     header: "Descripcion",
@@ -125,10 +131,12 @@ angular.module('app.services', [])
     this.GetAdditionalFoci = function(){
         return [
             {	key:"quest-2", 
+                actions: ["stop", "block", "note", "delete", "fail", "cancel"],
                 title: "Quest 2", description: "Esta es la quest 2", 
                 last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
             },
             {	key:"quest-3", 
+                actions: ["stop", "block", "note", "delete", "fail", "cancel"],
                 title: "Quest 3", description: "Esta es la quest 3", 
                 last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
             },
@@ -196,5 +204,19 @@ angular.module('app.services', [])
     };
     
 }])
-;
 
+.service("IconResolver", [function(){
+    this.ResolveAction = function(action_class) {
+        switch(action_class){
+            case "stop": return "ion-stop";
+            case "block": return "ion-ios-pause";
+            case "note": return "ion-android-create";
+            case "delete": return "ion-trash-b";
+            case "fail": return "ion-thumbsdown";
+            case "cancel": return "ion-android-cancel";
+            case "wake": return "ion-arrow-up-a";
+            case "focus": return "ion-play";
+        }
+    }
+}])
+;
