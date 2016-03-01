@@ -3,9 +3,6 @@
         <i class="icon icon-bar-ins left ion-arrow-move"></i>
         <i class="icon icon-bar-ins left" ng-class="folding.IsShown(quest.key) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i>
         {{quest.title}} 
-        <i class="icon icon-bar-ins right ion-close"></i>
-        <i class="icon icon-bar-ins right ion-play"></i>
-        <i class="icon icon-bar-ins right ion-edit"></i>
     </ion-item>
     <div class="child-indent-container" ng-show="folding.IsShown(quest.key)">
         <action-bar actions="quest.actions" resolver="quest_action_resolver" obj="quest"/>
