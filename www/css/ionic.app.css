@@ -30,6 +30,10 @@ $dark:                            #444 !default;
 .child-indent-container {
   padding-left: 0.5em; }
 
+.modal-content {
+  text-align: center;
+  padding-top: 1em; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9745,6 +9749,3 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
-
-.icon-action-stop {
-  width: 1px; }

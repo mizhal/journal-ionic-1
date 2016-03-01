@@ -34,38 +34,13 @@ $dark:                            #444 !default;
 	padding-left: 0.5em;
 }
 
+.modal-content {
+    text-align: center;
+    padding-top: 1em;
+}
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
-// action icons
-.icon-action-stop {
-    @extend ion-stop;
-    @extend [class^="icon-"];
-    width: 1px;
-}
-.icon-action-block {
-    @extend ion-ios-pause;
-}
-.icon-action-note {
-    @extend ion-android-create;
-}
-.icon-action-delete {
-    @extend ion-trash-b;
-}
-.icon-action-fail {
-    @extend ion-thumbsdown;
-}
-.icon-action-cancel {
-    @extend ion-android-cancel;
-}
-.icon-action-wake {
-    @extend ion-arrow-up-a;
-}
-.icon-action-focus {
-    @extend ion-play;
-}
-
-

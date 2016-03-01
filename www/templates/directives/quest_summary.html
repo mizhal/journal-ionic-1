@@ -8,7 +8,7 @@
         <i class="icon icon-bar-ins right ion-edit"></i>
     </ion-item>
     <div class="child-indent-container" ng-show="folding.IsShown(quest)">
-        <action-bar actions="quest.actions"/>
+        <action-bar actions="quest.actions" resolver="quest_action_resolver" obj="quest"/>
         <div class="list card">
             <div class="item item-text-wrap item-icon-left">
                 <i class="icon ion-pin"></i>

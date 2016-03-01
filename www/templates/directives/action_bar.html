@@ -1,6 +1,6 @@
 <ion-list>
     <span ng-repeat="action in actions">
-        <button class="button">
+        <button class="button" ng-click="resolve(action, obj)">
             <i class="icon {{icon.ResolveAction(action)}}"></i>
         </button>
     </span>

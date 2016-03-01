@@ -219,4 +219,124 @@ angular.module('app.services', [])
         }
     }
 }])
+
+
+.service("QuestActionResolver", ["$ionicModal", "$q", "$rootScope", function($ionicModal, $q, $rootScope){
+    
+    var self = this;
+    
+    this.Resolve = function (action, quest){
+        switch(action) {
+            case "stop": return self.Stop(quest);
+            case "block": return self.Block(quest);
+            case "note": return self.Note(quest);
+            case "delete": return self.Delete(quest);
+            case "fail": return self.Fail(quest);
+            case "cancel": return self.Cancel(quest);
+            case "wake": return self.Wake(quest);
+            case "focus": return self.Focus(quest);
+        }
+    }
+    
+    this.Stop = function(quest) {
+        self.Confirm(quest)
+        .then(function(){ // OK
+                console.log("STOP: " + quest.title);
+        },
+        function(){ // FAIL
+                console.log("Rejected STOP" + quest.title)
+        })
+        ;
+    }
+    this.Block = function(quest) {
+        self.Confirm(quest)
+        .then(function(){ // OK
+                console.log("BLOCK: " + quest.title);
+        },
+        function(){ // FAIL
+                console.log("Rejected BLOCK" + quest.title)
+        })
+        ;
+    }    
+    this.Note = function(quest) {
+
+    }
+    this.Delete = function(quest) { 
+        self.Confirm(quest)
+        .then(function(){ // OK
+                console.log("DELETE: " + quest.title);
+        },
+        function(){ // FAIL
+                console.log("Rejected DELETE" + quest.title)
+        })
+        ;
+    }
+    this.Fail = function(quest) {
+        self.Confirm(quest)
+        .then(function(){ // OK
+                console.log("FAIL: " + quest.title);
+        },
+        function(){ // FAIL
+                console.log("Rejected FAIL" + quest.title)
+        })
+        ;
+    }
+    this.Cancel = function(quest) {
+        self.Confirm(quest)
+        .then(function(){ // OK
+                console.log("CANCEL: " + quest.title);
+        },
+        function(){ // FAIL
+                console.log("Rejected CANCEL" + quest.title)
+        })
+        ;
+    }
+    this.Wake = function(quest) {
+        self.Confirm(quest)
+        .then(function(){ // OK
+                console.log("WAKE: " + quest.title);
+        },
+        function(){ // FAIL
+                console.log("Rejected WAKE" + quest.title)
+        })
+        ;
+    }
+    this.Focus = function(quest) { 
+        self.Confirm(quest)
+        .then(function(){ // OK
+                console.log("FOCUS: " + quest.title);
+        },
+        function(){ // FAIL
+                console.log("Rejected FOCUS" + quest.title)
+        })
+        ;
+    }
+   
+    
+    var modal_scope = $rootScope.$new();
+    modal_scope.self = self;
+    modal_scope.confirm = function(){ 
+        self.modal.hide().then(function(){
+            modal_scope.deferred.resolve();
+        });
+    };
+    modal_scope.reject = function(){ 
+        self.modal.hide().then(function(){
+            modal_scope.deferred.reject();
+        });
+    };
+    
+    $ionicModal.fromTemplateUrl("templates/dialogs/confirm.html", {
+        animation: "slide-in-up",
+        scope: modal_scope,
+    }).then(function(modal){
+        self.modal = modal;
+    });
+    
+    this.Confirm = function(quest) { 
+       modal_scope.deferred = $q.defer();
+       self.modal.show();
+       return modal_scope.deferred.promise;
+    }
+}])
 ;

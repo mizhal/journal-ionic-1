@@ -1,6 +1,6 @@
 angular.module('app.directives', [])
 
-.directive('questSummary', ["FoldingFactoryService", function(FoldingFactoryService, IconResolver){
+.directive('questSummary', ["FoldingFactoryService", "QuestActionResolver", function(FoldingFactoryService, QuestActionResolver){
     return {
         templateUrl: "templates/directives/quest_summary.html",
         restrict: "E",
@@ -11,11 +11,12 @@ angular.module('app.directives', [])
         transclude: false,
         link: function(scope, elements, attrs){
             scope.folding = FoldingFactoryService.GetFoldingTracker();
-        }   
+            scope.quest_action_resolver = QuestActionResolver;
+        }
     };
 }])
 
-.directive('questDetail', ["FoldingFactoryService", function(FoldingFactoryService, IconResolver){
+.directive('questDetail', ["FoldingFactoryService", "QuestActionResolver", function(FoldingFactoryService, QuestActionResolver){
     return {
         templateUrl: "templates/directives/quest_detail.html",
         restrict: "E",
@@ -26,11 +27,12 @@ angular.module('app.directives', [])
         transclude: false,
         link: function(scope, elements, attrs){
             scope.folding = FoldingFactoryService.GetFoldingTracker();
-        }   
+            scope.quest_action_resolver = QuestActionResolver;
+        }
     };
 }])
 
-.directive('todoSection', ["FoldingFactoryService", function(FoldingFactoryService, IconResolver){
+.directive('todoSection', ["FoldingFactoryService", function(FoldingFactoryService){
     return {
         templateUrl: "templates/directives/todo_section.html",
         restrict: "E",
@@ -41,7 +43,7 @@ angular.module('app.directives', [])
         transclude: false,
         link: function(scope, elements, attrs){
             scope.folding = FoldingFactoryService.GetFoldingTracker();
-        }   
+        }
     };
 }])
 
@@ -51,11 +53,16 @@ angular.module('app.directives', [])
         restrict: "E",
         replace: true,
         scope: {
-            actions: "="
+            actions: "=",
+            obj: "=",
+            resolver: "="
         },
         transclude: false,
         link: function(scope, elements, attrs){
             scope.icon = IconResolver;
+            scope.resolve = function(action, obj){
+                scope.resolver.Resolve(action, obj);
+            }
         }   
     };
 }])
