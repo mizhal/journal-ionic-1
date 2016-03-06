@@ -1,7 +1,7 @@
 <ion-list>
-    <span ng-repeat="action in actions">
-        <button class="button" ng-click="resolve(action, obj)">
+    <div class="action-bar">
+        <button ng-repeat="action in actions" class="journal-buttons" ng-click="resolve(action, obj)">
             <i class="icon {{icon.ResolveAction(action)}}"></i>
         </button>
-    </span>
+    </div>
 </ion-list>

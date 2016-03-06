@@ -39,6 +39,69 @@ $dark:                            #444 !default;
     padding-top: 1em;
 }
 
+.card {
+    background-color: ivory;
+}
+
+.child-indent-container .list {
+    padding: 0;
+}
+
+.card.compact {
+    margin: 0;
+}
+
+.child-indent-container {
+    background-color: #841F27;
+}
+
+section .child-indent-container {
+    background-color: #CD5C5C;
+}
+
+.todo-item .child-indent-container {
+    background-color: #EEB4B4;
+}
+
+.quest-section header, .todo-section header {
+    background-color: orange;
+    padding: 0.25em 0.25em 0.25em 1em;
+}
+
+.action-bar {
+    padding: 0.5em;
+    background-color: ivory;
+}
+
+.child-indent-container a {
+    color: black;
+}
+
+a.hashtag {
+    color: darkblue;
+}
+
+.tabs-stable .padding {
+    padding: 0;
+}
+
+ion-item.todo-item.item{
+    padding: 0.3em;    
+}
+
+.todo-item .icon {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+.right {
+    float: right;
+}
+
+.journal .entry {
+    white-space: normal;
+}
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 

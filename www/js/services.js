@@ -122,6 +122,19 @@ angular.module('app.services', [])
                             text: "Anything 2", comment: "sdfd"}
                     ],
                     is_todo: true
+                },
+                {
+                    is_journal: true,
+                    entries: [
+                        {
+                            date: new Date(),
+                            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eg"
+                        },
+                        {
+                            date: new Date(),
+                            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eg"
+                        },
+                    ]
                 }
             ],
             last_journal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eget commodo tempor. Vivamus quis leo blandit, facilisis lacus condimentum, rutrum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce commodo tincidunt vestibulum."
@@ -337,6 +350,20 @@ angular.module('app.services', [])
        modal_scope.deferred = $q.defer();
        self.modal.show();
        return modal_scope.deferred.promise;
+    }
+}])
+
+.service("SessionService", ["$http", function($http){
+    
+    var session_data = {};
+    
+    this.LogIn = function(login, password){
+        
+    }
+    
+    // authenticated channel
+    this.GetChannel = function(){
+        
     }
 }])
 ;

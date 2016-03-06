@@ -6,7 +6,8 @@ angular.module('app.filters', [])
 	
 	return function(input){
 		return input.replace(regex, function(whole, word){
-			return '<a href="#/hashtag/' + word + '">#' + word + '</a>';
+			return '<a class="hashtag" href="#/hashtag/' + word + '">#' + word + '</a>';
 		});
 	};
-});
+})
+;

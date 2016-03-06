@@ -6,13 +6,13 @@
     </ion-item>
     <div class="child-indent-container" ng-show="folding.IsShown(quest)">
         <action-bar actions="quest.actions" resolver="quest_action_resolver" obj="quest"/>
-        <div class="list card">
+        <div class="list card compact">
             <div class="item item-text-wrap item-icon-left">
                 <i class="icon ion-pin"></i>
                 <a ng-bind-html="quest.description | hilightHashtags"></a>
             </div>
         </div>
-        <div class="list card">
+        <div class="list card compact">
             <div class="item item-text-wrap item-icon-left"> 
                 <i class="icon ion-pound"></i>
                 <a ng-bind-html="quest.last_journal | hilightHashtags"></a>

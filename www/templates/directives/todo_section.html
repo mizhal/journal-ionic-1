@@ -1,17 +1,22 @@
 <section class="todo-section">
-    <header>TRACK:</header>
+    <header>TRACK: <i class="icon ion-plus right"></i></header>
     <div class="child-indent-container">
         <ion-list ng-repeat="todo in todos">
-            <ion-item>
+            <ion-item class="todo-item item-icon-right" ng-if="!todo.promoted_to">
                 [{{todo.status}}]
                 {{todo.text | hilightHashtags}}
+                <i class="icon" ng-class="todo.comment ? 'ion-chatbox-working' : 'ion-compose'"></i>
             </ion-item>
-            <div class="child-indent-container" ng-if="todo.comment">
-                <p>{{todo.comment | hilightHashtags}}</p>
-            </div>
-            <div class ="child-indent-container" ng-if="todo.promoted_to">
-                <a href="#/quests/{{todo.promoted_to_slug}}">PROMOTED TO: {{todo.promoted_to}}</a>
-            </div>
+            <ion-item class="todo-item item-icon-right" ng-if="todo.promoted_to">
+                [<a href="#/quests/{{todo.promoted_to_slug}}">{{todo.promoted_to}}</a>]
+                {{todo.text | hilightHashtags}}
+                <i class="icon" ng-class="todo.comment ? 'ion-chatbox-working' : 'ion-compose'"></i>
+            </ion-item>
+            <ion-item class="todo-item" ng-if="todo.comment" style="display:none">
+                <div class="child-indent-container">
+                {{todo.comment | hilightHashtags}}
+                </div>
+            </ion-item>
         </ion-list>
     </div>
 </section>

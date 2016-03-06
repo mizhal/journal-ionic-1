@@ -1,0 +1,11 @@
+<section class="journal quest-section">
+    <header>JOURNAL: <i class="icon ion-plus right"></i></header>
+    <div class="child-indent-container">
+        <ion-list ng-repeat="entry in entries">
+            <ion-item class="entry">
+                <p>{{ entry.date | date : 'dd/mm/yy HH:MM' }}</p>
+                <a ng-bind-html="entry.text | hilightHashtags"></a>
+            </ion-item>
+        </ion-list>
+    </div>
+</section>

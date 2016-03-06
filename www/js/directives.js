@@ -47,6 +47,21 @@ angular.module('app.directives', [])
     };
 }])
 
+.directive('journalSection', ["FoldingFactoryService", function(FoldingFactoryService){
+    return {
+        templateUrl: "templates/directives/journal_section.html",
+        restrict: "E",
+        replace: true,
+        scope: {
+            entries: "="
+        },
+        transclude: false,
+        link: function(scope, elements, attrs){
+            scope.folding = FoldingFactoryService.GetFoldingTracker();
+        }
+    };
+}])
+
 .directive('actionBar', ["IconResolver", function(IconResolver){
     return {
         templateUrl: "templates/directives/action_bar.html",

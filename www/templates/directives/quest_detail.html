@@ -7,13 +7,14 @@
     <div class="child-indent-container" ng-show="folding.IsShown(quest.key)">
         <action-bar actions="quest.actions" resolver="quest_action_resolver" obj="quest"/>
         <ion-list ng-repeat="section in quest.sections">
-            <section class="list card" ng-if="section.is_text">
+            <section class="list card compact quest-section" ng-if="section.is_text">
                 <header>{{ section.header }}</header>
-                <div class="item item-text-wrap item-icon-left">
+                <div class="item item-text-wrap">
                     <a ng-bind-html="section.body | hilightHashtags"></a>
                 </div>
             </section>
             <todo-section todos="section.todos" ng-if="section.is_todo" />
+            <journal-section entries="section.entries" ng-if="section.is_journal" />
         <ion-list>
     </div>
 </article>
