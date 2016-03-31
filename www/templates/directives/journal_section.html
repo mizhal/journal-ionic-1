@@ -4,6 +4,7 @@
         <ion-list ng-repeat="entry in entries">
             <ion-item class="entry">
                 <p>{{ entry.date | date : 'dd/mm/yy HH:MM' }}</p>
+                <h3 ng-if="entry.heading">{{ entry.heading }}</h3>
                 <a ng-bind-html="entry.text | hilightHashtags"></a>
             </ion-item>
         </ion-list>

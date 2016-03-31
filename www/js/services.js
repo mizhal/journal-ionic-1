@@ -115,7 +115,7 @@ angular.module('app.services', [])
                             promoted_to: "#96",
                             promoted_to_slug: "96"
                         },
-                        { status: "NEXT", text: "Do something" },
+                        { status: "NEXT", text: "Do something sit amet, consectetur adipiscing elit. Vivamus luctus" },
                         { status: "TODO",
                             text: "Anything 1", comment: "sdfsad"},
                         { status: "DONE", 
@@ -132,6 +132,7 @@ angular.module('app.services', [])
                         },
                         {
                             date: new Date(),
+                            heading: "Do anything",
                             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus quam id velit varius, in pellentesque arcu ultricies. #Quisque maximus justo id dui ultrices dictum. Maecenas varius risus a facilisis placerat. Cras gravida accumsan nisl, nec suscipit ex tempor et. Praesent nisi ipsum, volutpat vel erat ut, consequat ullamcorper lacus. #Phasellus feugiat dolor eg"
                         },
                     ]

@@ -76,7 +76,7 @@ angular.module('app.routes', [])
     controller: 'signupCtrl'
   })
 
-$urlRouterProvider.otherwise('/login')
+$urlRouterProvider.otherwise('/home/focus')
 
   
 
