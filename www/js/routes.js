@@ -78,6 +78,4 @@ angular.module('app.routes', [])
 
 $urlRouterProvider.otherwise('/home/focus')
 
-  
-
 });
