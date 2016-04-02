@@ -17,9 +17,11 @@ angular.module('app.controllers', [])
     
 }])
    
-.controller('journalCtrl', function($scope) {
-
-})
+.controller('journalCtrl', ["$scope", "JournalService", function($scope, JournalService) {
+    $scope.write = function(){
+        
+    };
+}])
    
 .controller('codexCtrl', function($scope) {
 

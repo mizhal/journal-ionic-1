@@ -180,7 +180,7 @@ angular.module('app.services', [])
     this.GetFoldingTracker = function() { return new FoldingTracker(); } 
 }])
 
-// this service allows to tests in browser as well as in the device
+// this service allows to test in browser as well as in the device
 .service('DBWrapper', ["$cordovaSQLite", function($cordovaSQLite){
     
     var db = null;
@@ -233,7 +233,6 @@ angular.module('app.services', [])
         }
     }
 }])
-
 
 .service("QuestActionResolver", ["$ionicModal", "$q", "$rootScope", function($ionicModal, $q, $rootScope){
     
@@ -366,5 +365,42 @@ angular.module('app.services', [])
     this.GetChannel = function(){
         
     }
+}])
+
+.service("JournalService", ["DBWrapper", function(DBWrapper){
+    this.database = null;
+    var service = this;
+    this.data = {};
+    
+    function CreateEntry(text, entry_type){
+        var new_entry = {
+          "created_at": new Date(),
+          "text": text,
+          "type": entry_type,
+          "id": this.data.length,
+          "parents": []
+        };
+        service.data.push(new_entry);
+    }
+    
+    this.SetCurrentFilterAndSorting = function(filtersort_object){
+        
+    };
+    
+    this.Write = function(text, entry_type){
+        
+    };
+    
+    this.Update = function(id, text){
+        
+    };
+    
+    this.GetAllFilteredPaginated = function(page, size){
+        
+    };
+    
+    this.GetAllUnfilteredPaginated = function(page, size){
+        
+    };
 }])
 ;
