@@ -6,6 +6,8 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var jasmineBrowser = require('gulp-jasmine-browser');
+var watch = require('gulp-watch');
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -48,4 +50,12 @@ gulp.task('git-check', function(done) {
     process.exit(1);
   }
   done();
+});
+
+gulp.task('jasmine', function() {
+  var filesForTest = ['src/**/*.js', 'spec/**/*_spec.js', 'spec/**/*.spec.js'] 
+  return gulp.src(filesForTest)
+    .pipe(watch(filesForTest))
+    .pipe(jasmineBrowser.specRunner())
+    .pipe(jasmineBrowser.server({port: 8888}));
 });
