@@ -220,7 +220,6 @@ angular.module('app.services', [])
     }
 }])
 
-
 .service("QuestActionResolver", ["$ionicModal", "$q", "$rootScope", function($ionicModal, $q, $rootScope){
     
     var self = this;
@@ -337,6 +336,39 @@ angular.module('app.services', [])
        modal_scope.deferred = $q.defer();
        self.modal.show();
        return modal_scope.deferred.promise;
+    }
+}])
+
+.service("MementoVersionTrackerService", ["DBWrapper", "rfc4122", function(DBWrapper, rfc4122){
+    this.in_memory_temp = {};
+    
+    var self = this;
+    
+    this.Create = function(entity){
+        var uuid = rfc4122.v4();
+        entity.uuid = uuid;
+        
+        self.in_memory_temp[entity.uuid] = {
+            memento: entity,
+            parents: [],
+            created_at: new Date(),
+            is_diff: false
+        };
+    };
+    
+    this.Update = function(uuid, entity){
+        var past = self.in_memory_temp[uuid];
+        var current = entity;
+        var diff = JsDiff.diffChars(current, past);
+        var newuuid = rfc4122.v4();
+        entity.uuid = newuuid;
+        
+        self.in_memory_temp[entity.uuid] = {
+            memento: diff,
+            parents: [uuid],
+            created_at: new Date(),
+            is_diff: true
+        };
     }
 }])
 ;
