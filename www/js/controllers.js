@@ -18,8 +18,20 @@ angular.module('app.controllers', [])
 }])
    
 .controller('journalCtrl', ["$scope", "JournalService", function($scope, JournalService) {
-    $scope.write = function(){
+    $scope.page = 0;
+    $scope.page_size = 20;
+    $scope.timeFormat = "hh:mm";
+    $scope.dateFormat = "";
+    $scope.entries = JournalService
+        .GetAllWithHeadings($scope.page, $scope.page_size);
         
+    $scope.inputText = "";
+    $scope.write = function(){
+        JournalService.Write($scope.inputText);
+        $scope.entries = JournalService
+            .GetAllWithHeadings(
+                $scope.page, $scope.page_size
+            );
     };
 }])
    

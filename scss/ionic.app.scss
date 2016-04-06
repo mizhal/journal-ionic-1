@@ -103,6 +103,35 @@ ion-item.todo-item.item{
     white-space: normal;
 }
 
+/*** 
+* EFECTS 
+*
+***/
+
+/** Text overflow with fading **/
+
+@mixin fading-text($size) {
+  content: '';
+  width: 100%;
+  height: 100%;    
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(transparent $size, white);    
+}
+
+.fade-text-2:before {
+    @include fading-text(2em);
+}
+
+.fade-text-3:before {
+    @include fading-text(3em);
+}
+
+.fade-text-4:before {
+    @include fading-text(4em);
+}
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 

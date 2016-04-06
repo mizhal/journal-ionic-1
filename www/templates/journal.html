@@ -1,13 +1,24 @@
 <ion-view title="Journal">
-    <ion-content overflow-scroll="true" padding="true" class="has-header">
-        <ion-list>
-            <ion-item>Item 1</ion-item>
-            <ion-item>Item 2</ion-item>
-            <ion-item>Item 3</ion-item>
-        </ion-list>
-        <ion-footer-bar>
-            <textarea style="width:100%" rows="10">Edit...</textarea>
-            <button><i class="icon ion-ios-paperplane"></i></button>
-        </ion-footer-bar>
+    <ion-content>
+        <ion-pane>
+            Filtros
+        </ion-pane>
     </ion-content>
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <ion-list ng-repeat="entry in entries">
+            <ion-item ng-if="entry.class == 'd'">
+                <div class="date">{{entry.created_at | date: dateFormat}}</div>
+            </ion-item>
+            <ion-item ng-if="entry.class == 'e'">
+                <div>{{entry.created_at | date : timeFormat}}</div>
+                <div>{{entry.text}}</div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar>
+        <textarea style="width:100%" rows="10" 
+            placeholder="Edit..." 
+            ng-model="inputText"></textarea>
+        <button ng-click="write()"><i class="icon ion-ios-paperplane"></i></button>
+    </ion-footer-bar>
 </ion-view>

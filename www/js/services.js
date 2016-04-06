@@ -370,25 +370,43 @@ angular.module('app.services', [])
 .service("JournalService", ["DBWrapper", function(DBWrapper){
     this.database = null;
     var service = this;
-    this.data = {};
+    this.data = [];
     
-    function CreateEntry(text, entry_type){
+    var self = this;
+    
+    function CreateEntry(text, entry_type, date){
         var new_entry = {
-          "created_at": new Date(),
+          "created_at": (date) ? date : new Date(),
           "text": text,
           "type": entry_type,
-          "id": this.data.length,
-          "parents": []
+          "id": self.data.length,
+          "parents": [],
+          "class": 'e'
         };
-        service.data.push(new_entry);
+        service.data.unshift(new_entry);
+    }
+    
+    function CreateHeading(date){
+        return {
+           "created_at": date,
+           "class": 'd'
+        };
+    }
+    
+    // test data
+    var base_date = new Date();
+    
+    for(var x = 0; x < 100; x++){
+        base_date = base_date.addMinutes(12*60)
+        CreateEntry("Test", 0, base_date);
     }
     
     this.SetCurrentFilterAndSorting = function(filtersort_object){
         
     };
     
-    this.Write = function(text, entry_type){
-        
+    this.Write = function(text, entry_type = 0){
+        CreateEntry(text, entry_type);
     };
     
     this.Update = function(id, text){
@@ -396,11 +414,30 @@ angular.module('app.services', [])
     };
     
     this.GetAllFilteredPaginated = function(page, size){
-        
+        return this.data.slice(page, page + size);
     };
     
     this.GetAllUnfilteredPaginated = function(page, size){
+        return this.data.slice(page, page + size);
+    };
+    
+    this.GetAllWithHeadings = function(page, size){
+        var data = this.data.slice(page, page + size);
         
+        var res = [];
+        var heading_date = null;
+        
+        for(var i = 0; i < data.length; i++){
+            var entry = data[i];
+            if(!entry.created_at.IsEqualDate(heading_date))
+            {
+                heading_date = entry.created_at;
+                res.push(CreateHeading(entry.created_at));
+            }
+            res.push(data[i]);
+        }
+        
+        return res;
     };
 }])
 
